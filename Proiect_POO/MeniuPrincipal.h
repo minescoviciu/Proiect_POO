@@ -1,8 +1,10 @@
 #pragma once
+//#include "XMLManager.h"
+namespace ProiectPOO {
+
 #define CATELABELURI 7
 #define CATETEXTBOXURI 6
 #define XMLPATH "XMLPacienti.xml"
-namespace ProiectPOO {
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -397,7 +399,7 @@ namespace ProiectPOO {
 				if (con != nullptr)
 					con->Text = "";
 			}
-			shimbaCuloareLabeluri(groupBoxDataPersonale, Color::Black);
+
 		}
 	}
 
