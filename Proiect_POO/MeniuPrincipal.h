@@ -399,7 +399,7 @@ namespace ProiectPOO {
 				if (con != nullptr)
 					con->Text = "";
 			}
-
+			shimbaCuloareLabeluri(groupBoxDataPersonale, Color::Black);
 		}
 	}
 
