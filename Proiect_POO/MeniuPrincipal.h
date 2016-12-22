@@ -1,5 +1,6 @@
 #pragma once
 //#include "XMLManager.h"
+#include "AdaugaPacientUserControl.h"
 namespace ProiectPOO {
 
 #define CATELABELURI 7
@@ -356,6 +357,9 @@ namespace ProiectPOO {
 	{
 		//writeXml("Ionescu", "Ioana", "str Cantacuzino nr 1", "ioanaionescu@yahoo.com", "0712123123", "femini", 56, 1);
 		groupBoxAdaugaVizualizeaza->Visible = true;
+		AdaugaPacientUserControl^ temp = gcnew AdaugaPacientUserControl();
+		temp->Location = Point(700, 20);
+		this->Controls->Add(temp);
 	}
 
 	private: System::Void groupBoxDataPersonale_VisibleChanged(System::Object^  sender, System::EventArgs^  e)

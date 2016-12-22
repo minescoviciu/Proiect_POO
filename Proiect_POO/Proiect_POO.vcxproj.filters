@@ -35,6 +35,9 @@
     <ClInclude Include="XMLManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AdaugaPacientUserControl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="XMLPacienti.xml" />
