@@ -9,9 +9,11 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Resurse">
+      <UniqueIdentifier>{b5e1e49d-a711-475b-bdcf-f8227b130d8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Imagini">
+      <UniqueIdentifier>{0fd598f3-fc2a-40d1-bb97-d82c51ba83cc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -38,8 +40,29 @@
     <ClInclude Include="AdaugaPacientUserControl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ButonCautare.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ButonRotund.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="XMLPacienti.xml" />
+    <EmbeddedResource Include="ImageResources.resx">
+      <Filter>Resurse</Filter>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Imagini\searchIcon.png">
+      <Filter>Imagini</Filter>
+    </Image>
+    <Image Include="Imagini\plus.png" />
+    <Image Include="Imagini\plus_2.jpg" />
+    <Image Include="Imagini\plus_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="XMLPacienti.xml">
+      <Filter>Resurse</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

@@ -21,7 +21,7 @@ void main(array<String^>^ args)
 
 	elem = elem->NextSibling;
 
-	pacient x(elem);
+	Pacient x(elem);
 
 	Console::WriteLine(x.getNume());
 
