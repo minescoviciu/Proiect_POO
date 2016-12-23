@@ -1,9 +1,9 @@
 #pragma once
-ref class pacient
+ref class Pacient
 {
 public:
 	//constructori
-	pacient(System::Xml::XmlNode^);
+	Pacient(System::Xml::XmlNode^);
 	//getteri
 	System::String^ getNume();
 	System::String^ getPrenume();

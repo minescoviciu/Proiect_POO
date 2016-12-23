@@ -2,7 +2,7 @@
 
 
 //constructori
-pacient::pacient(System::Xml::XmlNode^ element)
+Pacient::Pacient(System::Xml::XmlNode^ element)
 {
 	if (element->Name == "pacient")
 	{
@@ -29,42 +29,42 @@ pacient::pacient(System::Xml::XmlNode^ element)
 }
 
 //geteri
-System::String^ pacient::getNume()
+System::String^ Pacient::getNume()
 {
 	return this->nume;
 }
 
-System::String^ pacient::getPrenume()
+System::String^ Pacient::getPrenume()
 {
 	return this->prenume;
 }
 
-System::String^ pacient::getAndresa()
+System::String^ Pacient::getAndresa()
 {
 	return this->andresa;
 }
 
-System::String^ pacient::getEmail()
+System::String^ Pacient::getEmail()
 {
 	return this->email;
 }
 
-System::String^ pacient::getNumarTelefon()
+System::String^ Pacient::getNumarTelefon()
 {
 	return this->numarTelefon;
 }
 
-System::String^ pacient::getSex()
+System::String^ Pacient::getSex()
 {
 	return this->sex;
 }
 
-int pacient::getVarsta()
+int Pacient::getVarsta()
 {
 	return this->varsta;
 }
 
-int pacient::getCod()
+int Pacient::getCod()
 {
 	return this->cod;
 }

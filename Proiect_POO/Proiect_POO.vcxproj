@@ -106,6 +106,9 @@
       <AdditionalDependencies />
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>main</EntryPointSymbol>
+      <AssemblyLinkResource>
+      </AssemblyLinkResource>
+      <EmbedManagedResourceFile>ImageResources.resx</EmbedManagedResourceFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -140,6 +143,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AdaugaPacientUserControl.h" />
+    <ClInclude Include="ButonCautare.h" />
+    <ClInclude Include="ButonRotund.h" />
     <ClInclude Include="MeniuPrincipal.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -148,6 +153,18 @@
   </ItemGroup>
   <ItemGroup>
     <Xml Include="XMLPacienti.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ImageResources.resx" />
+    <EmbeddedResource Include="MeniuPrincipal.resx">
+      <DependentUpon>MeniuPrincipal.h</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Imagini\plus.png" />
+    <Image Include="Imagini\plus_2.jpg" />
+    <Image Include="Imagini\plus_3.png" />
+    <Image Include="Imagini\searchIcon.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
