@@ -12,6 +12,7 @@ private:
 	array<System::Byte>^ VectorDinImagine(System::Drawing::Image^);
 	array<System::Byte>^ VectorDinImagine(System::Drawing::Bitmap^);
 	System::Drawing::Image^ ImagineDinVector(array<System::Byte>^);
+	System::Drawing::Bitmap^ redimensionareImagine(System::Drawing::Image^);
 	//variabile
 	array<System::Byte>^ vectorBiti;
 	array<System::Drawing::Image^>^ imagini;
