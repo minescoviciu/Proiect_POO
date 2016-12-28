@@ -46,8 +46,7 @@ namespace ProiectPOO {
 			imagini->Images->Add((Image^)rm->GetObject("plus_3"));
 			imagini->Images->Add((Image^)rm->GetObject("searchIcon"));
 			imagini->Images->Add((Image^)rm->GetObject("rose3"));
-			
-			buttonPacientNou->Image = imagini->Images[0];
+		
 
 			ButonCautare^ bt = gcnew ButonCautare( Color::Gold);
 			bt->Location = Point(10, 10);
@@ -74,9 +73,9 @@ namespace ProiectPOO {
 
 			System::String^ path = "F:\\Visual Studio\\Programe Temp\\POO\\Proiect_POO\\Imagini\\rose1.jpg";
 			Image^ img = Image::FromFile(path);
-			//imagini->Images->Add(img);
+			imagini->Images->Add(img);
 			//imaginea trebuie incarcata direct din fisier;
-			//PrelucrareImagine x(img);
+			PrelucrareImagine x(img);
 		}
 
 	private: System::Void Click(System::Object^  sender, System::EventArgs^  e)
