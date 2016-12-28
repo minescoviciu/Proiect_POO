@@ -2,6 +2,7 @@
 //#include "XMLManager.h"
 #include "AdaugaPacientUserControl.h"
 #include "ButonCautare.h"
+#include "PrelucrareImagine.h"
 namespace ProiectPOO {
 
 #define CATELABELURI 7
@@ -44,6 +45,7 @@ namespace ProiectPOO {
 			imagini->Images->Add((Image^)rm->GetObject("plus_2"));
 			imagini->Images->Add((Image^)rm->GetObject("plus_3"));
 			imagini->Images->Add((Image^)rm->GetObject("searchIcon"));
+			imagini->Images->Add((Image^)rm->GetObject("rose3"));
 			
 			buttonPacientNou->Image = imagini->Images[0];
 
@@ -70,6 +72,11 @@ namespace ProiectPOO {
 			br3->Click += gcnew System::EventHandler(this, &ProiectPOO::MeniuPrincipal::Click);
 			this->Controls->Add(br3);
 
+			System::String^ path = "F:\\Visual Studio\\Programe Temp\\POO\\Proiect_POO\\Imagini\\rose1.jpg";
+			Image^ img = Image::FromFile(path);
+			//imagini->Images->Add(img);
+			//imaginea trebuie incarcata direct din fisier;
+			//PrelucrareImagine x(img);
 		}
 
 	private: System::Void Click(System::Object^  sender, System::EventArgs^  e)
@@ -89,7 +96,8 @@ namespace ProiectPOO {
 			}
 		}
 	private: System::Windows::Forms::Button^  buttonPacientNou;
-	private: System::Windows::Forms::RadioButton^  radioButton1;
+
+
 
 
 
@@ -111,7 +119,6 @@ namespace ProiectPOO {
 		void InitializeComponent(void)
 		{
 			this->buttonPacientNou = (gcnew System::Windows::Forms::Button());
-			this->radioButton1 = (gcnew System::Windows::Forms::RadioButton());
 			this->SuspendLayout();
 			// 
 			// buttonPacientNou
@@ -125,25 +132,10 @@ namespace ProiectPOO {
 			this->buttonPacientNou->Name = L"buttonPacientNou";
 			this->buttonPacientNou->Size = System::Drawing::Size(64, 53);
 			this->buttonPacientNou->TabIndex = 0;
-			this->buttonPacientNou->Text = L"r";
+			this->buttonPacientNou->Text = L"Nou";
 			this->buttonPacientNou->TextImageRelation = System::Windows::Forms::TextImageRelation::ImageAboveText;
 			this->buttonPacientNou->UseVisualStyleBackColor = false;
 			this->buttonPacientNou->Click += gcnew System::EventHandler(this, &MeniuPrincipal::buttonPacientNou_Click);
-			// 
-			// radioButton1
-			// 
-			this->radioButton1->AutoSize = true;
-			this->radioButton1->BackColor = System::Drawing::Color::Transparent;
-			this->radioButton1->FlatAppearance->BorderSize = 0;
-			this->radioButton1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->radioButton1->ForeColor = System::Drawing::Color::Black;
-			this->radioButton1->Location = System::Drawing::Point(214, 388);
-			this->radioButton1->Name = L"radioButton1";
-			this->radioButton1->Size = System::Drawing::Size(84, 17);
-			this->radioButton1->TabIndex = 1;
-			this->radioButton1->TabStop = true;
-			this->radioButton1->Text = L"radioButton1";
-			this->radioButton1->UseVisualStyleBackColor = false;
 			// 
 			// MeniuPrincipal
 			// 
@@ -151,13 +143,11 @@ namespace ProiectPOO {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::LightCoral;
 			this->ClientSize = System::Drawing::Size(558, 562);
-			this->Controls->Add(this->radioButton1);
 			this->Controls->Add(this->buttonPacientNou);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Name = L"MeniuPrincipal";
 			this->Text = L"MeniuPrincipal";
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion

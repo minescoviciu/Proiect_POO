@@ -8,6 +8,7 @@ using namespace System::Data;
 using namespace System::Drawing;
 
 #include "XMLManager.h"
+#include "ButonRotund.h"
 
 #define CATELABELURI 7
 #define CATETEXTBOXURI 6
@@ -54,7 +55,16 @@ private: System::Void CreeazaControale()
 	//textboxuri//
 	generareTextBox(CATETEXTBOXURI);
 	//butonAdauga//
-	this->buttonAdauga->Location = System::Drawing::Point(230, 285);
+
+	ButonRotund^buttonAdauga = gcnew ButonRotund(Color::Gold, "Adaugã");
+	buttonAdauga->Location = Point(230, 285);
+	buttonAdauga->Size = System::Drawing::Size(80, 20);
+	buttonAdauga->Click += gcnew System::EventHandler(this, &AdaugaPacientUserControl::buttonAdauga_Click);
+	buttonAdauga->Name = "buttonAdaua";
+	this->buttonAdauga->TabIndex = comboBoxSex->TabIndex + 1;
+	this->Controls->Add(buttonAdauga);
+
+	/*this->buttonAdauga->Location = System::Drawing::Point(230, 285);
 	this->buttonAdauga->Name = L"buttonAdauga";
 	this->buttonAdauga->Size = System::Drawing::Size(75, 23);
 	this->buttonAdauga->TabIndex = 2;
@@ -62,7 +72,7 @@ private: System::Void CreeazaControale()
 	this->buttonAdauga->UseVisualStyleBackColor = true;
 	this->buttonAdauga->Click += gcnew System::EventHandler(this, &AdaugaPacientUserControl::buttonAdauga_Click);
 	this->buttonAdauga->TabIndex = comboBoxSex->TabIndex + 1;
-	this->Controls->Add(buttonAdauga);
+	this->Controls->Add(buttonAdauga);*/
 }
 
 protected:
@@ -144,8 +154,11 @@ private: System::Windows::Forms::TextBox^generareTextBoxTemplate()
 	temp->ForeColor = System::Drawing::SystemColors::WindowText;
 	temp->Location = System::Drawing::Point(120, 35);
 	temp->Name = L"textDate";
-	temp->Size = System::Drawing::Size(147, 20);
+	temp->Size = System::Drawing::Size(147, 30);
+	temp->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+		static_cast<System::Byte>(238)));
 	temp->TabIndex = 1;
+	temp->BorderStyle = System::Windows::Forms::BorderStyle::None;
 	return temp;
 }
 
@@ -161,6 +174,8 @@ private: System::Void generareTextBox(int cate)
 		textBoxuri[i]->Name = textBoxuri[0]->Name + "copie" + i;
 		textBoxuri[i]->Size = textBoxuri[0]->Size;
 		textBoxuri[i]->TabIndex = textBoxuri[i-1]->TabIndex + 1;
+		textBoxuri[i]->BorderStyle = textBoxuri[0]->BorderStyle;
+		textBoxuri[i]->Font = textBoxuri[0]->Font;
 		this->Controls->Add(textBoxuri[i]);
 	}
 

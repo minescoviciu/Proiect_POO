@@ -26,6 +26,9 @@
     <ClCompile Include="XMLManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PrelucrareImagine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MeniuPrincipal.h">
@@ -46,11 +49,15 @@
     <ClInclude Include="ButonRotund.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PrelucrareImagine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ImageResources.resx">
       <Filter>Resurse</Filter>
     </EmbeddedResource>
+    <EmbeddedResource Include="MeniuPrincipal.resx" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Imagini\searchIcon.png">
@@ -59,6 +66,8 @@
     <Image Include="Imagini\plus.png" />
     <Image Include="Imagini\plus_2.jpg" />
     <Image Include="Imagini\plus_3.png" />
+    <Image Include="Imagini\rose1.jpg" />
+    <Image Include="Imagini\rose3.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="XMLPacienti.xml">

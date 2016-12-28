@@ -84,10 +84,12 @@ private:	Void InitializareLabel(String^ text)
 	this->label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(238)));
 	this->label->Location = System::Drawing::Point(10, 0);
+	this->label->MaximumSize = System::Drawing::Size(this->Size.Width - 20, this->Size.Height);
 	this->label->Name = L"label";
 	//this->label->Size = System::Drawing::Size(51, 20);
 	this->label->TabIndex = 1;
 	this->label->Text =text;
+	this->label->Click += gcnew System::EventHandler(this, &ButonRotund::Control_Click);
 	this->Controls->Add(label);
 }
 
