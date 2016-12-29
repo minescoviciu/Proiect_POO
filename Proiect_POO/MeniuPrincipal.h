@@ -71,11 +71,14 @@ namespace ProiectPOO {
 			br3->Click += gcnew System::EventHandler(this, &ProiectPOO::MeniuPrincipal::Click);
 			this->Controls->Add(br3);
 
-			System::String^ path = "F:\\Visual Studio\\Programe Temp\\POO\\Proiect_POO\\Imagini\\rose1.jpg";
+			System::String^ path = "F:\\Visual Studio\\Programe Temp\\POO\\Proiect_POO\\Imagini\\canapea1.jpg";
 			Image^ img = Image::FromFile(path);
 			imagini->Images->Add(img);
+			System::Diagnostics::Stopwatch^ timer = System::Diagnostics::Stopwatch::StartNew();
 			//imaginea trebuie incarcata direct din fisier;
 			PrelucrareImagine x(img);
+			timer->Stop();
+			label1->Text = timer->ElapsedMilliseconds.ToString();
 		}
 
 	private: System::Void Click(System::Object^  sender, System::EventArgs^  e)
@@ -95,6 +98,7 @@ namespace ProiectPOO {
 			}
 		}
 	private: System::Windows::Forms::Button^  buttonPacientNou;
+	private: System::Windows::Forms::Label^  label1;
 
 
 
@@ -118,6 +122,7 @@ namespace ProiectPOO {
 		void InitializeComponent(void)
 		{
 			this->buttonPacientNou = (gcnew System::Windows::Forms::Button());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// buttonPacientNou
@@ -136,17 +141,28 @@ namespace ProiectPOO {
 			this->buttonPacientNou->UseVisualStyleBackColor = false;
 			this->buttonPacientNou->Click += gcnew System::EventHandler(this, &MeniuPrincipal::buttonPacientNou_Click);
 			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(263, 320);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(35, 13);
+			this->label1->TabIndex = 1;
+			this->label1->Text = L"label1";
+			// 
 			// MeniuPrincipal
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::LightCoral;
 			this->ClientSize = System::Drawing::Size(558, 562);
+			this->Controls->Add(this->label1);
 			this->Controls->Add(this->buttonPacientNou);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Name = L"MeniuPrincipal";
 			this->Text = L"MeniuPrincipal";
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion

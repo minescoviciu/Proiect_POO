@@ -3,18 +3,23 @@ ref class PrelucrareImagine
 {
 public:
 	PrelucrareImagine(System::Drawing::Image^);
-	System::Drawing::Image^ CeaMaiApropiataImagine();
+	System::Void CeaMaiApropiataImagine();
 
 private:
 	//metode
 	System::Void IncarcaCelelalteImagini();
-	int DistantaHemming(System::Byte, System::Byte);
-	array<System::Byte>^ VectorDinImagine(System::Drawing::Image^);
-	array<System::Byte>^ VectorDinImagine(System::Drawing::Bitmap^);
-	System::Drawing::Image^ ImagineDinVector(array<System::Byte>^);
-	System::Drawing::Bitmap^ redimensionareImagine(System::Drawing::Image^);
+	int PrelucrareImagine::DistantaHemming(System::UInt64, System::UInt64);
+	System::Drawing::Bitmap^ RedimensionareImagine(System::Drawing::Image^, int);
+	// face imaginea gri si o redimensioneaza
+	double ValoareMedie(array<double,2>^);
+	System::UInt64 CreareBiti(System::Drawing::Image^);
+	array<double, 2>^ ObtineDCT(array<double, 2>^, int);
+	array<int, 2>^ ObtineIDCT(array<double, 2>^, int);
+	array<double, 2>^ Obtine8x8dinDCT(System::Drawing::Bitmap^);
+	array<double, 2>^ Obtine8x8dinImagine(System::Drawing::Bitmap^);
 	//variabile
-	array<System::Byte>^ vectorBiti;
+	System::UInt64 biti64;
 	array<System::Drawing::Image^>^ imagini;
+	System::Drawing::Bitmap^ imagineInitiala;
 };
 
