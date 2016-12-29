@@ -8,13 +8,13 @@ PrelucrareImagine::PrelucrareImagine(System::Drawing::Image^ imagine)
 {
 	IncarcaCelelalteImagini();
 	//System::String^ path = "F:\\Visual Studio\\Programe Temp\\POO\\Proiect_POO\\Imagini\\lala.jpg";
-	//lkl
 	biti64 = CreareBiti(imagine);
 	CeaMaiApropiataImagine();
 }
 
 System::Void PrelucrareImagine::CeaMaiApropiataImagine()
 {
+	// ia fiecare imagine pe rand si compara hashurile cu imaginea data in constructor
 	int k = 0;
 	for (int i = 0; i < imagini->Length; i++)
 	{
@@ -32,6 +32,7 @@ System::Void PrelucrareImagine::CeaMaiApropiataImagine()
 
 System::Void PrelucrareImagine::IncarcaCelelalteImagini()
 {
+	//incarca imaginile din folderul "img" aflat in directorul curent
 	array<System::String^>^fileEntries = System::IO::Directory::GetFiles(System::IO::Directory::GetCurrentDirectory() + "\\img");
 	System::Collections::IEnumerator^ files = fileEntries->GetEnumerator();
 	imagini = gcnew array<System::Drawing::Image^>(fileEntries->Length);
@@ -47,6 +48,7 @@ System::Void PrelucrareImagine::IncarcaCelelalteImagini()
 
 int PrelucrareImagine::DistantaHemming(System::UInt64 x, System::UInt64 y)
 {
+	//distanta Hemming compara fiecare bit a lui x cu cel al lui y, distanta creste daca bitii sunt diferiti
 	int distanta = 0;
 	System::UInt64 val = x^y;
 	while (val)
@@ -59,6 +61,7 @@ int PrelucrareImagine::DistantaHemming(System::UInt64 x, System::UInt64 y)
 
 System::Drawing::Bitmap ^ PrelucrareImagine::RedimensionareImagine(System::Drawing::Image^ imagine, int size)
 {
+	// aduce imaginea data ca parametru la o imagine alb negru (grayscale)
 	System::Drawing::Bitmap^ img = gcnew System::Drawing::Bitmap(imagine);
 	for (int i = 0; i < imagine->Width; i++)
 	{
@@ -71,6 +74,7 @@ System::Drawing::Bitmap ^ PrelucrareImagine::RedimensionareImagine(System::Drawi
 		}
 	}
 
+	//redimensioneaza imaginea alb negru la dimensiunea specificata
 	System::Drawing::Bitmap^ destImg = gcnew System::Drawing::Bitmap(size, size);
 	System::Drawing::Rectangle destRect(0, 0, size, size);
 	
@@ -88,13 +92,13 @@ System::Drawing::Bitmap ^ PrelucrareImagine::RedimensionareImagine(System::Drawi
 
 	g->DrawImage(img, destRect, 0, 0,img->Width, img->Height,  System::Drawing::GraphicsUnit::Pixel, wrapMode);
 
-	
-
 	return destImg;
 }
 
 double PrelucrareImagine::ValoareMedie(array<double, 2>^ matrice)
 {
+	//calculeaza media tuturor valorilor matricei fara elementul de pe pozitia [0,0]
+	//se da ca argument o matrice de frecventa 
 	double medie = 0;
 	for (int i = 0; i < SIZESMALL; i++)
 	{
@@ -110,11 +114,13 @@ double PrelucrareImagine::ValoareMedie(array<double, 2>^ matrice)
 //SIZELONG
 System::UInt64 PrelucrareImagine::CreareBiti(System::Drawing::Image ^img)
 {
+	//creaza un numar de tipul long long (int64) care este folosit pentru aflarea distantei hemming
 	System::Drawing::Bitmap^ imagine = RedimensionareImagine(img, SIZELONG);
 	array<double, 2>^ matrice8x8 = Obtine8x8dinDCT(imagine);
-	//array<double, 2>^ matrice8x8 = Obtine8x8dinImagine(imagine);
 	System::UInt64 biti = 0;
 	double medie = ValoareMedie(matrice8x8);
+	//numarul se formeaza cu ajutorul matricei de frecventa aka "matrice8x8"
+	//I se face media, iar bitul k din secventa de 64 este 1 daca elementul de pe pozitia k este mai mare decat media si 0 altfel
 	for (int i = 0; i < SIZESMALL; i++)
 	{
 		for (int j = 0; j < SIZESMALL; j++)
@@ -133,6 +139,7 @@ System::UInt64 PrelucrareImagine::CreareBiti(System::Drawing::Image ^img)
 
 array<double, 2>^ PrelucrareImagine::ObtineDCT(array<double, 2>^ matriceInitiala, int SIZE)
 {
+	//calculeaza o matrice formata din trasformarea de cosinus discreta aferenta unei matrici patratice.
 	array<double, 1>^ coeficienti = gcnew array<double, 1>(SIZE);
 	array<double, 2>^ matrice = gcnew array<double, 2>(SIZE, SIZE);
 	double radicalSizePatrat = System::Math::Sqrt(SIZE * SIZE);
@@ -157,7 +164,6 @@ array<double, 2>^ PrelucrareImagine::ObtineDCT(array<double, 2>^ matriceInitiala
 			}
 			double aux = 2 * coeficienti[u] * coeficienti[v] / radicalSizePatrat;
 			sum *= aux;
-			//sum *= coeficienti[u] * coeficienti[v] / 4.0;
 			matrice[u,v] = sum;
 		}
 	}
@@ -166,6 +172,7 @@ array<double, 2>^ PrelucrareImagine::ObtineDCT(array<double, 2>^ matriceInitiala
 
 array<int, 2>^ PrelucrareImagine::ObtineIDCT(array<double, 2>^ matriceInitiala, int SIZE)
 {
+	//calculeaza matricea initiala pornind de la o matrice de frecventa obtinuta prin DCT ( transformare de cosinus discreta)
 	array<double, 1>^ coeficienti = gcnew array<double, 1>(SIZE);
 	array<int, 2>^ matrice = gcnew array<int, 2>(SIZE, SIZE);
 
@@ -196,6 +203,7 @@ array<int, 2>^ PrelucrareImagine::ObtineIDCT(array<double, 2>^ matriceInitiala, 
 
 array<double, 2>^ PrelucrareImagine::Obtine8x8dinDCT(System::Drawing::Bitmap^ img)
 {
+	//se obtine o matrice de frecventa de dimensiuni SIZELONG X SIZELONG dintr-o imagine initiala redusa la o dimensiune mica si alb neagra
 	array<double, 2>^ matriceDCT = gcnew array<double, 2>(SIZELONG, SIZELONG);
 	array<double, 2>^ matriceInitiala = gcnew array<double, 2>(SIZELONG, SIZELONG);
 	for (int i = 0; i < SIZELONG; i++)
@@ -213,6 +221,7 @@ array<double, 2>^ PrelucrareImagine::Obtine8x8dinDCT(System::Drawing::Bitmap^ im
 
 array<double, 2>^ PrelucrareImagine::Obtine8x8dinImagine(System::Drawing::Bitmap ^ img)
 {
+	//obtine matricea de pixel gri dintr-o imagine alb negru redimensionata
 	array<double, 2>^ matrice = gcnew array<double, 2>(SIZESMALL, SIZESMALL);
 	for (int i = 0; i < SIZESMALL; i++)
 	{
