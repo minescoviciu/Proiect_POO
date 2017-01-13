@@ -7,12 +7,12 @@ using namespace System::Windows::Forms;
 using namespace System::Data;
 using namespace System::Drawing;
 
-#include "XMLManager.h"
 #include "ButonRotund.h"
+#include "SQL_Acces.h"
 
 #define CATELABELURI 7
 #define CATETEXTBOXURI 6
-#define XMLPATH "XMLPacienti.xml"
+#define CONNECTION_STRING "datasource=localhost;port=3306;username=minescoviciu;password=root1234;"
 
 /// <summary>
 /// Summary for AdaugaPacientUserControl
@@ -273,11 +273,12 @@ private: System::Void buttonAdauga_Click(System::Object^  sender, System::EventA
 	}
 	else
 	{
-		XMLManager newXml(XMLPATH);
-		newXml.writeXml(textBoxuri[0]->Text, textBoxuri[1]->Text,
+		SQL_Acces^ variabila = gcnew SQL_Acces(CONNECTION_STRING);
+		variabila->AdaugaPacient(textBoxuri[0]->Text, textBoxuri[1]->Text,
 			textBoxuri[2]->Text, textBoxuri[3]->Text,
 			textBoxuri[4]->Text, comboBoxSex->Text,
 			Int32::Parse(textBoxuri[5]->Text));
+
 		textBoxuri[0]->Text = "";
 		for each (Control^ con in textBoxuri)
 		{

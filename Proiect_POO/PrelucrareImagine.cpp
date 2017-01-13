@@ -6,14 +6,12 @@
 
 PrelucrareImagine::PrelucrareImagine(System::Drawing::Image^ imagine)
 {
-	IncarcaCelelalteImagini();
-	//System::String^ path = "F:\\Visual Studio\\Programe Temp\\POO\\Proiect_POO\\Imagini\\lala.jpg";
 	biti64 = CreareBiti(imagine);
-	CeaMaiApropiataImagine();
 }
 
 System::Void PrelucrareImagine::CeaMaiApropiataImagine()
 {
+	IncarcaCelelalteImagini();
 	// ia fiecare imagine pe rand si compara hashurile cu imaginea data in constructor
 	int k = 0;
 	for (int i = 0; i < imagini->Length; i++)
@@ -28,6 +26,11 @@ System::Void PrelucrareImagine::CeaMaiApropiataImagine()
 			imagini[i]->Save(path);
 		}
 	}
+}
+
+System::String ^ PrelucrareImagine::GetHash()
+{
+	return biti64.ToString();
 }
 
 System::Void PrelucrareImagine::IncarcaCelelalteImagini()
