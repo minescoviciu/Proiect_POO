@@ -2,69 +2,78 @@
 
 
 //constructori
-Pacient::Pacient(System::Xml::XmlNode^ element)
+
+
+Pacient::Pacient(System::String ^ nume, System::String ^ prenume, System::String ^ andresa, System::String ^ email, System::String ^ numarTelefon, int varsta, int id)
 {
-	if (element->Name == "pacient")
-	{
-		for (int i = 0; i < element->ChildNodes->Count; i++)
-		{
-			if (element->ChildNodes[i]->Name == "nume")
-				this->nume = element->ChildNodes[i]->InnerText;
-			else if (element->ChildNodes[i]->Name == "prenume")
-				this->prenume = element->ChildNodes[i]->InnerText;
-			else if (element->ChildNodes[i]->Name == "numarTelefon")
-				this->numarTelefon = element->ChildNodes[i]->InnerText;
-			else if (element->ChildNodes[i]->Name == "andresa")
-				this->andresa = element->ChildNodes[i]->InnerText;
-			else if (element->ChildNodes[i]->Name == "email")
-				this->email = element->ChildNodes[i]->InnerText;
-			else if (element->ChildNodes[i]->Name == "varsta")
-				this->varsta = __int32::Parse(element->ChildNodes[i]->InnerText);
-			else if (element->ChildNodes[i]->Name == "sex")
-				this->sex = element->ChildNodes[i]->InnerText;
-			else if (element->ChildNodes[i]->Name == "cod")
-				this->cod = __int32::Parse(element->ChildNodes[i]->InnerText);
-		}
-	}
+	this->nume = nume;
+	this->prenume = prenume;
+	this->andresa = andresa;
+	this->email = email;
+	this->numarTelefon = numarTelefon;
+	this->varsta = varsta;
+	this->id = id;
+}
+
+Pacient::Pacient(const Pacient ^& copie)
+{
+	this->nume = copie->nume;
+	this->prenume = copie->prenume;
+	this->andresa = copie->andresa;
+	this->email = copie->email;
+	this->numarTelefon = copie->numarTelefon;
+	this->varsta = copie->varsta;
+	this->id = copie->id;
+}
+
+System::Void Pacient::SetMamografii(array<Mamografie^>^ mamografii)
+{
+	this->imagini_mamografii = mamografii;
 }
 
 //geteri
-System::String^ Pacient::getNume()
+System::String^ Pacient::GetNume()
 {
 	return this->nume;
 }
 
-System::String^ Pacient::getPrenume()
+System::String^ Pacient::GetPrenume()
 {
 	return this->prenume;
 }
 
-System::String^ Pacient::getAndresa()
+System::String^ Pacient::GetAndresa()
 {
 	return this->andresa;
 }
 
-System::String^ Pacient::getEmail()
+System::String^ Pacient::GetEmail()
 {
 	return this->email;
 }
 
-System::String^ Pacient::getNumarTelefon()
+System::String^ Pacient::GetNumarTelefon()
 {
 	return this->numarTelefon;
 }
 
-System::String^ Pacient::getSex()
+array<Mamografie^>^ Pacient::GetMamografii()
 {
-	return this->sex;
+	return this->imagini_mamografii;
 }
 
-int Pacient::getVarsta()
+int Pacient::GetVarsta()
 {
 	return this->varsta;
 }
 
-int Pacient::getCod()
+int Pacient::GetID()
 {
-	return this->cod;
+	return this->id;
+}
+
+System::Void Pacient::AfisareInMessageBox()
+{
+	System::Windows::Forms::MessageBox::Show(nume + " " + prenume + " adresa: " + andresa +
+										" id: " +id.ToString() + " email: " + email + " telefon: " + numarTelefon + " varsta: " + varsta.ToString());
 }

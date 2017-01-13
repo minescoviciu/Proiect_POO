@@ -23,10 +23,13 @@
     <ClCompile Include="Pacient.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="XMLManager.cpp">
+    <ClCompile Include="PrelucrareImagine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PrelucrareImagine.cpp">
+    <ClCompile Include="SQL_Acces.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mamografie.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,9 +38,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Pacient.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="XMLManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AdaugaPacientUserControl.h">
@@ -50,6 +50,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PrelucrareImagine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SQL_Acces.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mamografie.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -68,10 +74,5 @@
     <Image Include="Imagini\plus_3.png" />
     <Image Include="Imagini\rose1.jpg" />
     <Image Include="Imagini\rose3.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Xml Include="XMLPacienti.xml">
-      <Filter>Resurse</Filter>
-    </Xml>
   </ItemGroup>
 </Project>

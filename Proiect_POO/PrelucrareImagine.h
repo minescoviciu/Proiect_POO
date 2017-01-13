@@ -4,6 +4,7 @@ ref class PrelucrareImagine
 public:
 	PrelucrareImagine(System::Drawing::Image^);
 	System::Void CeaMaiApropiataImagine();
+	System::String^ GetHash();
 
 private:
 	//metode
